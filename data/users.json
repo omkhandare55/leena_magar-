@@ -1,0 +1,56 @@
+[
+  {
+    "id": "admin001",
+    "email": "admin@example.com",
+    "password": "admin123",
+    "fullName": "System Administrator",
+    "role": "admin",
+    "approved": true,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "user001",
+    "email": "teacher1@example.com",
+    "password": "teacher123",
+    "fullName": "Dr. Sarah Johnson",
+    "role": "teacher",
+    "approved": true,
+    "createdAt": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": "user002",
+    "email": "teacher2@example.com",
+    "password": "teacher123",
+    "fullName": "Prof. James Wilson",
+    "role": "teacher",
+    "approved": true,
+    "createdAt": "2024-01-15T10:15:00Z"
+  },
+  {
+    "id": "user003",
+    "email": "student1@example.com",
+    "password": "student123",
+    "fullName": "Alice Thompson",
+    "role": "student",
+    "approved": true,
+    "createdAt": "2024-01-20T14:00:00Z"
+  },
+  {
+    "id": "user004",
+    "email": "student2@example.com",
+    "password": "student123",
+    "fullName": "Bob Martinez",
+    "role": "student",
+    "approved": true,
+    "createdAt": "2024-01-20T14:30:00Z"
+  },
+  {
+    "id": "user005",
+    "email": "student3@example.com",
+    "password": "student123",
+    "fullName": "Emma Davis",
+    "role": "student",
+    "approved": true,
+    "createdAt": "2024-01-21T09:00:00Z"
+  }
+]

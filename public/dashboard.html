@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Notes Organizer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">📚</span>
+                <span class="logo-text">Notes Organizer</span>
+            </div>
+            <div class="nav-menu">
+                <span class="user-info" id="userInfo"></span>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="btn btn-secondary btn-small" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Alert System -->
+    <div id="alertContainer" class="alert-container"></div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Menu</h3>
+            <ul class="sidebar-menu">
+            <li><a href="#notes" class="menu-item active" data-section="notes">📝 Browse Notes</a></li>
+            <li id="uploadMenuBtn" style="display: none;"><a href="#upload" class="menu-item" data-section="upload">📤 Upload Notes</a></li>
+            <li id="myNotesMenuBtn" style="display: none;"><a href="#my-notes" class="menu-item" data-section="my-notes">👤 My Notes</a></li>
+            <li id="approvalsMenuBtn" style="display: none;"><a href="#approvals" class="menu-item" data-section="approvals">✅ Approvals</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Browse Notes Section -->
+            <section id="notes-section" class="dashboard-section active">
+                <h2>Browse Notes</h2>
+
+                <!-- Search and Filter Bar -->
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search notes by title or description...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="departmentFilter" class="filter-label">Department</label>
+                            <select id="departmentFilter" title="Filter by department">
+                                <option value="">All Departments</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="yearFilter" class="filter-label">Year</label>
+                            <select id="yearFilter" title="Filter by year">
+                                <option value="">All Years</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="subjectFilter" class="filter-label">Subject</label>
+                            <select id="subjectFilter" title="Filter by subject">
+                                <option value="">All Subjects</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="sortBy" class="filter-label">Sort By</label>
+                            <select id="sortBy" title="Sort notes">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="title">Title (A-Z)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Grid -->
+                <div id="notesGrid" class="notes-grid"></div>
+            </section>
+
+            <!-- Upload Files/Links Section -->
+            <section id="upload-section" class="dashboard-section" style="display: none;">
+                <div class="upload-container">
+                    <!-- Left Sidebar: User's Uploads -->
+                    <div class="upload-sidebar">
+                        <h3>Your Uploads</h3>
+                        <div id="userUploadsList" class="user-uploads-list">
+                            <p class="no-uploads">No uploads yet</p>
+                        </div>
+                    </div>
+
+                    <!-- Upload Form -->
+                    <div class="upload-form-container">
+                        <h2>Upload File or Link</h2>
+
+                        <!-- Upload Type Toggle -->
+                        <div class="upload-type-toggle">
+                            <button type="button" id="fileUploadBtn" class="upload-type-btn active">📁 Upload File</button>
+                            <button type="button" id="linkUploadBtn" class="upload-type-btn">🔗 Upload Link</button>
+                        </div>
+
+                        <form id="uploadForm" class="upload-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="uploadTitle">Title *</label>
+                                    <input type="text" id="uploadTitle" required placeholder="Enter title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="uploadDepartment">Department *</label>
+                                    <select id="uploadDepartment" required>
+                                        <option value="">Select department</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="uploadYear">Year *</label>
+                                    <select id="uploadYear" required>
+                                        <option value="">Select year</option>
+                                        <option value="1st Year">1st Year</option>
+                                        <option value="2nd Year">2nd Year</option>
+                                        <option value="3rd Year">3rd Year</option>
+                                        <option value="4th Year">4th Year</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="uploadSubject">Subject *</label>
+                                    <input type="text" id="uploadSubject" required placeholder="Enter subject code">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="uploadDescription">Description *</label>
+                                <textarea id="uploadDescription" required placeholder="Describe the contents..." rows="4"></textarea>
+                            </div>
+
+                            <!-- File Upload Fields -->
+                            <div id="fileUploadFields" class="upload-fields">
+                                <div class="form-group">
+                                    <label for="uploadFile">Select File * (PDF, DOCX, Images, Videos)</label>
+                                    <input type="file" id="uploadFile" accept=".pdf,.docx,.jpg,.jpeg,.png,.gif,.mp4,.mov">
+                                </div>
+                            </div>
+
+                            <!-- Link Upload Fields -->
+                            <div id="linkUploadFields" class="upload-fields" style="display: none;">
+                                <div class="form-group">
+                                    <label for="uploadLink">Link URL *</label>
+                                    <input type="url" id="uploadLink" placeholder="https://example.com or https://youtube.com/...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkPlatform">Platform</label>
+                                    <select id="linkPlatform">
+                                        <option value="other">Other</option>
+                                        <option value="youtube">YouTube</option>
+                                        <option value="vimeo">Vimeo</option>
+                                        <option value="coursera">Coursera</option>
+                                        <option value="udemy">Udemy</option>
+                                        <option value="khanacademy">Khan Academy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Notes Section (Teachers Only) -->
+            <section id="my-notes-section" class="dashboard-section" style="display: none;">
+                <h2>My Uploaded Notes</h2>
+                <div id="myNotesGrid" class="notes-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Note Details -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

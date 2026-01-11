@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Notes Organizer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">📚</span>
+                <span class="logo-text">Notes Organizer</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="login.html" class="nav-link active">Login</a>
+                <a href="register.html" class="nav-link">Register</a>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-form">
+                <h1>Login</h1>
+                <p class="auth-subtitle">Access your account to view and manage notes</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="admin@notes.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+
+                <p class="auth-link">Don't have an account? <a href="register.html">Register here</a></p>
+
+                <div class="demo-credentials">
+                    <p><strong>Demo Credentials:</strong></p>
+                    <p><small>Teacher: teacher1@example.com / teacher123</small></p>
+                    <p><small>Student: student1@example.com / student123</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
